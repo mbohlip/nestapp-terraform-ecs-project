@@ -56,32 +56,28 @@ variable "ssh_location" {
   type          = string
 }
 
-################################################
-
 # RDS variables
 variable "db_snapshots_identifier" {
-  default       = "arn:aws:rds:us-east-1:821363534163:snapshot:mpn-rds-db-snapshot"
-  description   = "database snapshot arn"
+  description   = "database snapshot name"
   type          = string
 }
 
 variable "db_instance_class" {
-  default       = "db.t2.micro"
   description   = "the database instance type"
   type          = string
 }
 
 variable "db_instance_identifier" {
-  default       = "mpn-rds-db"
   description   = "the database instance identifier"
   type          = string
 }
 
 variable "multi-az-deployment" {
-  default       = false
   description   = "create a standby db instance"
   type          = bool
 }
+
+################################################
 
 # ALB variables
 variable "ssl_certificate_arn" {
