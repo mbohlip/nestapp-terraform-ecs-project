@@ -14,8 +14,6 @@ variable "environment" {
   type          = string
 }
 
-################################################
-
 # vpc variables
 variable "vpc_cidr" {
   default       = "10.0.0.0/16"
@@ -58,6 +56,10 @@ variable "private_data_subnet_AZ2_cidr" {
   description   = "Private Data Subnet AZ2 cidr block"
   type          = string
 }
+
+################################################
+
+
 
 # Security group variables
 variable "ssh_location" {

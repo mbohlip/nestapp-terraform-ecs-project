@@ -4,7 +4,7 @@ terraform {
     bucket         = "mpn20-terraform-statefiles"
     key            = "rentzone-ecs/terraform.tfstate"
     region         = "us-east-1"
-    profile        = "terraform_user"
+    profile        = "terraform-user"
     dynamodb_table = "terrafoiorm-state-lock"
   }
 }
