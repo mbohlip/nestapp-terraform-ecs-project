@@ -77,6 +77,18 @@ variable "multi-az-deployment" {
   type          = bool
 }
 
+# ACM variables
+variable "domain_name" {
+  description   = "Domain name"
+  type          = string
+}
+
+variable "alternative_names" {
+  default       = "www"
+  description   = "Sub domain name"
+  type          = string
+}
+
 ################################################
 
 # ALB variables
@@ -119,14 +131,9 @@ variable "ec2_keypair_name" {
 }
 
 # Route 53 variables
-variable "domain_name" {
-  default       = "mpndevops.com"
-  description   = "Domain name"
-  type          = string
-}
+# variable "domain_name" {
+#   default       = "mpndevops.com"
+#   description   = "Domain name"
+#   type          = string
+# }
 
-variable "record_name" {
-  default       = "www"
-  description   = "Sub domain name"
-  type          = string
-}
