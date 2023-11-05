@@ -89,6 +89,17 @@ variable "alternative_names" {
   type          = string
 }
 
+# S3 variables
+variable "env_file_bucket_name" {
+  description   = "S3 bucket name"
+  type          = string
+}
+
+variable "env_file_name" {
+  description   = "ENV file name"
+  type          = string
+}
+
 ################################################
 
 # ALB variables
