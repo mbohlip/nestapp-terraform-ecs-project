@@ -57,94 +57,78 @@ variable "ssh_location" {
 }
 
 # RDS variables
-variable "db_snapshots_identifier" {
-  description   = "database snapshot name"
-  type          = string
-}
-
-variable "db_instance_class" {
-  description   = "the database instance type"
-  type          = string
-}
-
-variable "db_instance_identifier" {
-  description   = "the database instance identifier"
-  type          = string
-}
-
-variable "multi-az-deployment" {
-  description   = "create a standby db instance"
-  type          = bool
-}
+variable "db_engine" {}
+variable "db_engine_version" {}
+variable "multi-az-deployment" {}
+variable "db_instance_identifier" {}
+variable "db_master_username" {}
+variable "db_master_password" {}
+variable "db_instance_class" {}
+variable "db_storage" {}
+variable "rds_db_name" {}
+variable "final_snapshot" {}
+variable "public_access" {}
 
 # ACM variables
-variable "domain_name" {
-  description   = "Domain name"
-  type          = string
-}
-
-variable "alternative_names" {
-  default       = "www"
-  description   = "Sub domain name"
-  type          = string
-}
+variable "domain_name" {}
+variable "alternative_names" {}
 
 # S3 variables
-variable "env_file_bucket_name" {
-  description   = "S3 bucket name"
-  type          = string
-}
+variable "env_file_bucket_name" {}
+variable "env_file_name" {}
 
-variable "env_file_name" {
-  description   = "ENV file name"
-  type          = string
-}
+# EC2 variables
+variable "ami" {}
+variable "ec2-instance-type" {}
+
+# IAM variables
+variable "policy-arn" {}
 
 ################################################
 
-# ALB variables
-variable "ssl_certificate_arn" {
-  default       = "arn:aws:acm:us-east-1:821363534163:certificate/2ee1cea5-f503-4ba5-bb9b-a099310f1a8d"
-  description   = "SSL certificate ARN"
-  type          = string
-}
-
-# SNS topic variables
-variable "operator_email" {
-  default       = "mbohlip@aol.com"
-  description   = "a valid email address"
-  type          = string
-}
-
-# ASG variables
-variable "launch_template_name" {
-  default       = "Dev-launch-template"
-  description   = "name of the launch template"
-  type          = string
-}
-
-variable "ec2_image_id" {
-  default       = "ami-06888834bc43fe382"
-  description   = "id of the ami"
-  type          = string
-}
-
-variable "ec2_instance_type" {
-  default       = "t2.micro"
-  description   = "ec2 instance type"
-  type          = string
-}
-
-variable "ec2_keypair_name" {
-  default       = "myec2key"
-  description   = "ec2 Keypair name"
-  type          = string
-}
-
-# Route 53 variables
-# variable "domain_name" {
-#   default       = "mpndevops.com"
-#   description   = "Domain name"
+# # ALB variables
+# variable "ssl_certificate_arn" {
+#   default       = "arn:aws:acm:us-east-1:821363534163:certificate/2ee1cea5-f503-4ba5-bb9b-a099310f1a8d"
+#   description   = "SSL certificate ARN"
 #   type          = string
 # }
+
+# # SNS topic variables
+# variable "operator_email" {
+#   default       = "mbohlip@aol.com"
+#   description   = "a valid email address"
+#   type          = string
+# }
+
+# # ASG variables
+# variable "launch_template_name" {
+#   default       = "Dev-launch-template"
+#   description   = "name of the launch template"
+#   type          = string
+# }
+
+# variable "ec2_image_id" {
+#   default       = "ami-06888834bc43fe382"
+#   description   = "id of the ami"
+#   type          = string
+# }
+
+# variable "ec2_instance_type" {
+#   default       = "t2.micro"
+#   description   = "ec2 instance type"
+#   type          = string
+# }
+
+# variable "ec2_keypair_name" {
+#   default       = "myec2key"
+#   description   = "ec2 Keypair name"
+#   type          = string
+# }
+
+# # Route 53 variables
+# # variable "domain_name" {
+# #   default       = "mpndevops.com"
+# #   description   = "Domain name"
+# #   type          = string
+# # }
 

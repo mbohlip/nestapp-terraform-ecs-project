@@ -4,7 +4,7 @@ resource "aws_eip" "eip1" {
   # vpc    = true
   
   tags   = {
-    Name = "${var.project_name}-${var.environment}-eip1"
+    Name = "MPN-NestApp-eip1"
   }
 }
 
@@ -14,7 +14,7 @@ resource "aws_eip" "eip2" {
   # vpc    = true
   
   tags   = {
-    Name = "${var.project_name}-${var.environment}-eip2"
+    Name = "MPN-NestApp-eip2"
   }
 }
 
@@ -24,7 +24,7 @@ resource "aws_nat_gateway" "nat_gateway_az1" {
   subnet_id     = aws_subnet.public_subnet_az1.id
 
   tags   = {
-    Name = "${var.project_name}-${var.environment}-ng-az1"
+    Name = "MPN-NestApp-ng-az1"
   }
 
   # to ensure proper ordering, it is recommended to add an explicit dependency
@@ -37,7 +37,7 @@ resource "aws_nat_gateway" "nat_gateway_az2" {
   subnet_id     = aws_subnet.public_subnet_az2.id
 
   tags   = {
-    Name = "${var.project_name}-${var.environment}-ng-az2"
+    Name = "MPN-NestApp-ng-az2"
   }
 
   # to ensure proper ordering, it is recommended to add an explicit dependency
@@ -54,7 +54,7 @@ resource "aws_route_table" "private_route_table_az1" {
   }
 
   tags   = {
-    Name = "${var.project_name}-${var.environment}-private-rt-az1"
+    Name = "MPN-NestApp-private-rt-az1"
   }
 }
 
@@ -80,7 +80,7 @@ resource "aws_route_table" "private_route_table_az2" {
   }
 
   tags   = {
-    Name = "${var.project_name}-${var.environment}-private-rt-az2"
+    Name = "MPN-NestApp-private-rt-az2"
   }
 }
 
