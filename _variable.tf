@@ -82,16 +82,25 @@ variable "ami" {}
 variable "ec2-instance-type" {}
 
 # IAM variables
-variable "policy-arn" {}
+variable "s3-policy-arn" {}
+variable "ecs-policy-arn" {}
+
+# ALB variables
+variable "alb_target_type" {}
+variable "alb_matcher" {}
+variable "alb_default_action_type" {}
+variable "alb_redirect_host" {}
+variable "alb_redirect_path" {}
+variable "alb_redirect_status_code" {}
+variable "ssl_certificate_arn" {}
+
+# ECS variables
+# variable "alb_target_type" {}
+# variable "alb_matcher" {}
 
 ################################################
 
-# # ALB variables
-# variable "ssl_certificate_arn" {
-#   default       = "arn:aws:acm:us-east-1:821363534163:certificate/2ee1cea5-f503-4ba5-bb9b-a099310f1a8d"
-#   description   = "SSL certificate ARN"
-#   type          = string
-# }
+
 
 # # SNS topic variables
 # variable "operator_email" {
