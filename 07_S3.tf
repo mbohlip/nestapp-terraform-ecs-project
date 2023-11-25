@@ -1,6 +1,6 @@
 # create an s3 bucket 
 resource "aws_s3_bucket" "env_file_bucket" {
-  bucket = "NestApp-${var.env_file_bucket_name}"
+  bucket = "nestapp-${var.env_file_bucket_name}"
 }
 
 # upload the environment file from local computer into the s3 bucket

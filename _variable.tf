@@ -1,60 +1,19 @@
 # environment variables
-variable "region" {
-  description   = "Region to create resources"
-  type          = string
-}
-
-variable "project_name" {
-  description   = "Project Name"
-  type          = string
-}
-
-variable "environment" {
-  description   = "Environment"
-  type          = string
-}
+variable "region" {}
+variable "project_name" {}
+variable "environment" {}
 
 # vpc variables
-variable "vpc_cidr" {
-  description   = "VPC CIDR Block"
-  type          = string
-}
-
-variable "public_subnet_AZ1_cidr" {
-  description   = "Public Subnet AZ1 cidr block"
-  type          = string
-}
-
-variable "public_subnet_AZ2_cidr" {
-  description   = "Public Subnet AZ2 cidr block"
-  type          = string
-}
-
-variable "private_app_subnet_AZ1_cidr" {
-  description   = "Private App Subnet AZ1 cidr block"
-  type          = string
-}
-
-variable "private_app_subnet_AZ2_cidr" {
-  description   = "Private App Subnet AZ2 cidr block"
-  type          = string
-}
-
-variable "private_data_subnet_AZ1_cidr" {
-  description   = "Private Data Subnet AZ1 cidr block"
-  type          = string
-}
-
-variable "private_data_subnet_AZ2_cidr" {
-  description   = "Private Data Subnet AZ2 cidr block"
-  type          = string
-}
+variable "vpc_cidr" {}
+variable "public_subnet_AZ1_cidr" {}
+variable "public_subnet_AZ2_cidr" {}
+variable "private_app_subnet_AZ1_cidr" {}
+variable "private_app_subnet_AZ2_cidr" {}
+variable "private_data_subnet_AZ1_cidr" {}
+variable "private_data_subnet_AZ2_cidr" {}
 
 # Security group variables
-variable "ssh_location" {
-  description   = "the ip address that can ssh into the server"
-  type          = string
-}
+variable "ssh_location" {}
 
 # RDS variables
 variable "db_engine" {}
@@ -68,6 +27,7 @@ variable "db_storage" {}
 variable "rds_db_name" {}
 variable "final_snapshot" {}
 variable "public_access" {}
+variable "rds_endpoint" {}
 
 # ACM variables
 variable "domain_name" {}
@@ -80,6 +40,8 @@ variable "env_file_name" {}
 # EC2 variables
 variable "ami" {}
 variable "ec2-instance-type" {}
+variable "s3_nestapp_bucket" {}
+variable "nestapp_sql" {}
 
 # IAM variables
 variable "s3-policy-arn" {}
@@ -95,8 +57,8 @@ variable "alb_redirect_status_code" {}
 variable "ssl_certificate_arn" {}
 
 # ECS variables
-# variable "alb_target_type" {}
-# variable "alb_matcher" {}
+variable "ecs_architecture" {}
+# variable "ecs_container_image_uri" {}
 
 ################################################
 
