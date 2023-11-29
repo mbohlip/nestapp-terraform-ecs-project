@@ -47,16 +47,16 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 
       environmentFiles = [
         {
-          value = "arn:aws:s3:::NestApp-${var.env_file_bucket_name}/${var.env_file_name}"
-          type  = 
+          value = "arn:aws:s3:::nestapp-${var.env_file_bucket_name}/${var.env_file_name}"
+          type  = "s3"
         }
       ]
-      
+
       logConfiguration = {
         logDriver      = "awslogs",
         options        = {
           "awslogs-group"          = "${aws_cloudwatch_log_group.log_group.name}",
-           "awslogs-region"        = "${var.region}",
+          "awslogs-region"         = "${var.region}",
           "awslogs-stream-prefix"  = "ecs"
         }
       }
@@ -82,7 +82,7 @@ resource "aws_ecs_service" "ecs_service" {
   # vpc and security groups
   network_configuration {
     subnets = [aws_subnet.private_app_subnet_az1.id,aws_subnet.private_app_subnet_az2.id]
-    security_groups         =  [aws_security_group.server_security_group.id]
+    security_groups         =  [aws_security_group.container_sg.id]
     assign_public_ip        = false
   }
 

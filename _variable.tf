@@ -58,7 +58,10 @@ variable "ssl_certificate_arn" {}
 
 # ECS variables
 variable "ecs_architecture" {}
-# variable "ecs_container_image_uri" {}
+variable "ecs_container_image_uri" {}
+
+# Route-53 variables
+variable "record_name" {}
 
 ################################################
 
