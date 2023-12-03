@@ -1,6 +1,6 @@
 # create application load balancer
 resource "aws_lb" "application_lb" {
-  name                       = "mpn-nestapp-alb"
+  name                       = "${var.environment}-${var.project_name}-alb"
   internal                   = false
   load_balancer_type         = "application"
   security_groups            = [aws_security_group.alb_security_group.id]
@@ -8,13 +8,13 @@ resource "aws_lb" "application_lb" {
   enable_deletion_protection = false
 
   tags = {
-    Name = "mpn-nestapp-alb"
+    Name = "${var.environment}-${var.project_name}-alb"
   }
 }
 
 # create target group
 resource "aws_lb_target_group" "alb_target_group" {
-  name        = "mpn-nestapp-nest-tg"
+  name        = "${var.environment}-${var.project_name}-tg"
   target_type = var.alb_target_type
   port        = 80
   protocol    = "HTTP"

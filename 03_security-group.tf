@@ -1,6 +1,6 @@
 # create security group for the application load balancer
 resource "aws_security_group" "alb_security_group" {
-  name        = "mpn-nestapp-alb-sg"
+  name        = "${var.environment}-${var.project_name}-alb-sg"
   description = "enable http/https access on port 80/443"
   vpc_id      = aws_vpc.vpc.id
 
@@ -28,13 +28,13 @@ resource "aws_security_group" "alb_security_group" {
   }
 
   tags = {
-    Name = "mpn-nestapp-alb-sg"
+    Name = "${var.environment}-${var.project_name}-alb-sg"
   }
 }
 
 # create security group for eic endpoint
 resource "aws_security_group" "eice_security_group" {
-  name        = "mpn-nestapp-eice-sg"
+  name        = "${var.environment}-${var.project_name}-eice-sg"
   description = "Used to SSH into EC2 in the private subnet" # It initiates traffic from within our VPC
   vpc_id      = aws_vpc.vpc.id
 
@@ -46,18 +46,18 @@ resource "aws_security_group" "eice_security_group" {
   }
 
   tags = {
-    Name = "mpn-nestapp-eice-sg"
+    Name = "${var.environment}-${var.project_name}-eice-sg"
   }
 }
 
 # create security group for the server
 resource "aws_security_group" "server_security_group" {
-  name        = "mpn-nestapp-server-sg"
+  name        = "${var.environment}-${var.project_name}-server-sg"
   description = "enable ssh access on port 22"
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
-    description     = "http access"
+    description     = "http"
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
@@ -65,13 +65,13 @@ resource "aws_security_group" "server_security_group" {
   }
 
   ingress {
-    description     = "https access"
+    description     = "https"
     from_port       = 443
     to_port         = 443
     protocol        = "tcp"
     security_groups = [aws_security_group.alb_security_group.id]
   }
-
+  
   ingress {
     description     = "ssh access" // To ssh to server using ec2 instance connect endpoint
     from_port       = 22
@@ -88,14 +88,14 @@ resource "aws_security_group" "server_security_group" {
   }
 
   tags = {
-    Name = "mpn-nestapp-server-sg"
+    Name = "${var.environment}-${var.project_name}-server-sg"
   }
 }
 
 # create security group for the container
 resource "aws_security_group" "container_sg" {
-  name        = "mpn-nestapp-container-sg"
-  description = "mpn-nestapp-container-sg"
+  name        = "${var.environment}-${var.project_name}-container-sg"
+  description = "${var.environment}-${var.project_name}-container-sg"
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
@@ -122,14 +122,14 @@ resource "aws_security_group" "container_sg" {
   }
 
   tags = {
-    Name = "mpn-nestapp-container-sg"
+    Name = "${var.environment}-${var.project_name}-container-sg"
   }
 }
 
 # create security group for the Database
 resource "aws_security_group" "database_sg" {
-  name        = "mpn-nestapp-database-sg"
-  description = "mpn-nestapp-database-sg"
+  name        = "${var.environment}-${var.project_name}-database-sg"
+  description = "${var.environment}-${var.project_name}-database-sg"
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
@@ -156,6 +156,6 @@ resource "aws_security_group" "database_sg" {
   }
 
   tags = {
-    Name = "mpn-nestapp-database-sg"
+    Name = "${var.environment}-${var.project_name}-database-sg"
   }
 }

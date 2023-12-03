@@ -1,20 +1,13 @@
 # create database subnet group
 resource "aws_db_subnet_group" "database_subnet_group" {
-  name        = "mpn-nestapp-database-subnets"
+  name        = "${var.environment}-${var.project_name}-database-subnets"
   subnet_ids  = [aws_subnet.private_data_subnet_az1.id, aws_subnet.private_data_subnet_az2.id]
   description = "subnets for database instance"
 
   tags = {
-    Name = "mpn-nestapp-database-subnets"
+    Name = "${var.environment}-${var.project_name}-database-subnets"
   }
 }
-
-# # get the latest db snapshot
-# data "aws_db_snapshot" "latest_db_snapshot" {
-#   db_snapshot_identifier = var.db_snapshots_identifier
-#   most_recent            = true
-#   snapshot_type          = "manual"
-# }
 
 # create database instance restored from db snapshots
 resource "aws_db_instance" "database_instance" {

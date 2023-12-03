@@ -3,6 +3,6 @@ resource "aws_ec2_instance_connect_endpoint" "eice" {
   security_group_ids = [aws_security_group.eice_security_group.id]
 
   tags = {
-    Name = "mpn-nestapp-eice"
+    Name = "${var.environment}-${var.project_name}-eice"
   }
 }

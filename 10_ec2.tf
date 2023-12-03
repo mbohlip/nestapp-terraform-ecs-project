@@ -2,7 +2,7 @@
 resource "aws_instance" "ec2_instance" {
   ami                    = var.ami
   instance_type          = var.ec2-instance-type
-  subnet_id              = aws_subnet.public_subnet_az1.id
+  subnet_id              = aws_subnet.private_data_subnet_az2.id
   vpc_security_group_ids = [aws_security_group.server_security_group.id]
   iam_instance_profile   = aws_iam_instance_profile.ec2_profile.name
   key_name = "myec2key-pem"
@@ -19,6 +19,6 @@ resource "aws_instance" "ec2_instance" {
   depends_on = [aws_db_instance.database_instance]
 
   tags = {
-    Name = "mpn-nestapp-ec2"
+    Name = "${var.environment}-${var.project_name}-ec2"
   }
 }
