@@ -1,9 +1,9 @@
 # ECR repository to store docker image
 resource "aws_ecr_repository" "nestapp_ecr_repository" {
-  name = "mpn-nestapp-ecr-repository"
+  name = "${var.environment}-${var.project_name}-ecr-repository"
 
   tags = {
-    Name = "mpn-nestapp-ecr-repository"
+    Name = "${var.environment}-${var.project_name}-ecr-repository"
   }
 
 }
